@@ -1,0 +1,7 @@
+#+title: Basic image steganography
+
+A small program to merge images together. It's not the prettiest and it should definitely use less bit masks, but it's pretty nifty nonetheless.
+
+To handle different aspect ratios, it encodes the dimensions of the hidden image in its first couple pixels. It writes this information in the lower 4 bits of each color value (also nibble) and the first nibble holds how many bytes are needed to hold each dimension. 3 pixels = 9 bytes (12 if CMYK) - 1 byte = 8 nibbles = 8 * 4 bits = 32 bits = 32 / 2 = 16 bits so with 3 pixels, dimensions of the hidden image can be up to 2**16 x 2**16.
+
+I'm going to add hiding text in images and probably a couple different methods of merging two images together. LSB is cool but there are some cases where the other image is very apparent (especially when merging a very high contrast image into a low contrast one).
